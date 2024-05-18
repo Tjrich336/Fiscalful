@@ -69,6 +69,8 @@
 .card {
    width: auto;
    height: auto;
+   margin-bottom: 4rem;
+
 }
 
 .card-info {
