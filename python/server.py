@@ -15,6 +15,7 @@ from firebase_admin import firestore
 import flask
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import plaid
 from plaid.model.payment_amount import PaymentAmount
 from plaid.model.payment_amount_currency import PaymentAmountCurrency
@@ -59,6 +60,7 @@ load_dotenv()
 
 
 app = Flask(__name__)
+CORS(app, origins='thefiscalful.com')
 
 # Fill in your Plaid API keys - https://dashboard.plaid.com/account/keys
 PLAID_CLIENT_ID = os.getenv('PLAID_CLIENT_ID')

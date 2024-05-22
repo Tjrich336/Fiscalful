@@ -5,3 +5,4 @@ plaid-python
 python-dotenv
 transformers
 gunicorn
+Flask-CORS
