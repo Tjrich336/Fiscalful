@@ -60,7 +60,7 @@ load_dotenv()
 
 
 app = Flask(__name__)
-CORS(app, origins='thefiscalful.com')
+CORS(app, origins=['https://thefiscalful.com'])
 
 # Fill in your Plaid API keys - https://dashboard.plaid.com/account/keys
 PLAID_CLIENT_ID = os.getenv('PLAID_CLIENT_ID')
