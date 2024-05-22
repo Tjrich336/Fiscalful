@@ -29,7 +29,7 @@ function Login() {
       const user = userCredential.user;
       const uid = user.uid;
       console.log(",aasd", uid);
-      const response = await fetch("/api/start_worker", {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/start_worker`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

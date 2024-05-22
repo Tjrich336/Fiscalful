@@ -153,9 +153,9 @@ const AccessTokenDetails = () => {
     localStorage.setItem('firebase_user_id', firebaseUserId);
   }, [firebaseUserId]);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = async () => { 
     try {
-      const response = await fetch(`/api/transactions?current_access_token=${tokenId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/transactions?current_access_token=${tokenId}`);
       const data: TransactionsResponse = await response.json();
       console.log("Transactions response data:", data);
       setTransactionsData(data);
@@ -166,7 +166,7 @@ const AccessTokenDetails = () => {
 
   const fetchBalances = async () => {
     try {
-      const response = await fetch(`/api/balance?access_token=${tokenId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/balance?access_token=${tokenId}`);
       const data: BalancesResponse = await response.json();
       console.log("Balances response data:", data);
       setBalancesData(data);
@@ -177,7 +177,7 @@ const AccessTokenDetails = () => {
 
   const create_expense = async () => {
     try {
-      const response = await fetch(`/api/expense/create`, {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/expense/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -203,7 +203,7 @@ const AccessTokenDetails = () => {
 
   const delete_expense = async (expenseId: string) => {
     try {
-      const response = await fetch(`/api/expense/delete`, {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/expense/delete`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -225,7 +225,7 @@ const AccessTokenDetails = () => {
   
   const get_user_expenses = async (firebaseUserId: string): Promise<void> => {
     try {
-      const response = await fetch(`/api/expense/get?firebase_user_id=${firebaseUserId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/expense/get?firebase_user_id=${firebaseUserId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -251,7 +251,7 @@ const AccessTokenDetails = () => {
         return;
       }
 
-      const response = await fetch(`/api/budget/create`, {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/budget/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -278,7 +278,7 @@ const AccessTokenDetails = () => {
     try {
       let data;
       if (budgetData && budgetData.budgets && budgetData.budgets.length > 0) {
-        const response = await fetch('/api/budget/edit', {
+        const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/budget/edit`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -304,7 +304,7 @@ const AccessTokenDetails = () => {
   
   const get_user_budgets = async (firebaseUserId: string): Promise<void> => {
     try {
-      const response = await fetch(`/api/budget/get?firebase_user_id=${firebaseUserId}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/budget/get?firebase_user_id=${firebaseUserId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

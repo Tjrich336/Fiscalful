@@ -15,7 +15,7 @@ const App = () => {
   const [accessTokens, setAccessTokens] = useState([]);
 
   const getInfo = useCallback(async () => {
-    const response = await fetch("/api/info", { method: "POST" });
+    const response = await fetch(`${process.env.REACT_APP_API_HOST}/api/info`, { method: "POST" });
     if (!response.ok) {
       dispatch({ type: "SET_STATE", state: { backend: false } });
       return { paymentInitiation: false };
@@ -37,8 +37,8 @@ const App = () => {
     async (isPaymentInitiation) => {
       // Link tokens for 'payment_initiation' use a different creation flow in your backend.
       const path = isPaymentInitiation
-        ? "/api/create_link_token_for_payment"
-        : "/api/create_link_token";
+        ? `${process.env.REACT_APP_API_HOST}/api/create_link_token_for_payment`
+        : `${process.env.REACT_APP_API_HOST}/api/create_link_token`;
       const response = await fetch(path, {
         method: "POST",
       });
@@ -68,7 +68,7 @@ const App = () => {
   const queryOnComponentLoad = useCallback(async () => {
     const firebase_user_id = localStorage.getItem("firebase_user_id");
     const response = await fetch(
-      `/api/get_tokens_for_user?firebase_user_id=${firebase_user_id}`,
+      `${process.env.REACT_APP_API_HOST}/api/get_tokens_for_user?firebase_user_id=${firebase_user_id}`,
       {
         method: "GET",
         headers: {
