@@ -4,3 +4,4 @@ requests
 plaid-python
 python-dotenv
 transformers
+gunicorn
