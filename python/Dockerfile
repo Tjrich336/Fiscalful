@@ -16,6 +16,8 @@ WORKDIR /opt/app/python
 # Install other dependencies from requirements.txt
 RUN pip3 install -r requirements.txt
 
+RUN pip3 install gunicorn
+
 ENV FLASK_APP=/opt/app/python/server.py
 EXPOSE 8000
 ENTRYPOINT ["gunicorn"]
