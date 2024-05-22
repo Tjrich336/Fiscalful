@@ -19,6 +19,6 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install gunicorn
 
 ENV FLASK_APP=/opt/app/python/server.py
-EXPOSE 8000
+EXPOSE 10000
 ENTRYPOINT ["gunicorn"]
 CMD ["-b", "0.0.0.0:10000", "server:app"]
